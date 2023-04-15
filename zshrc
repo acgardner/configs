@@ -1,33 +1,34 @@
 BBLUE="\e[1;34m"
-
 echo "\n${BBLUE}Welcome Anthony! Try not to waste too many epochs :)\n"
 
-# =====================
-# EXPORTS          
-# =====================
-# Export path to command line executables
+# ============================================================
+# configure paths
+# ============================================================
+
+# export path to command line executables
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Export path to oh-my-zsh installation
+# export path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Export path to VS Code
+# export path to visual studio code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# ====================
-# ZSH SETTINGS
-# ====================
-# Define terminal theme
+# ============================================================
+# configure zsh
+# ============================================================
+
+# define terminal theme
 ZSH_THEME="robbyrussell"
 
-# Notify when an update is available
+# notify when an update is available
 zstyle ':omz:update' mode reminder
 
-# Enable command auto-correction
+# enable command auto-correction
 ENABLE_CORRECTION="true"
 
-# Configure plugins
+# configure plugins
 plugins=(git)
 
-# Source oh-my-zsh
+# source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
