@@ -19,6 +19,22 @@ brew install zoxide
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
+# fzf
+brew install fzf
+
+# bat
+brew install bat
+
+# lazygit
+brew install jesseduffield/lazygit/lazygit
+
+# ripgrep
+brew install ripgrep
+
+# nerd fonts
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-fonts
+
 #==================================================
 # move files around
 #==================================================
