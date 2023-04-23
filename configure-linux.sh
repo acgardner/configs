@@ -25,6 +25,9 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # fzf
 sudo apt install fzf -y
 
+# lsd
+sudo apt install lsd -y
+
 # nerd fonts
 mkdir -p $HOME/.local/share/fonts
 

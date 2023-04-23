@@ -31,6 +31,9 @@ brew install jesseduffield/lazygit/lazygit
 # ripgrep
 brew install ripgrep
 
+# lsd
+brew install lsd
+
 # nerd fonts
 brew tap homebrew/cask-fonts
 brew install font-hack-nerd-fonts
