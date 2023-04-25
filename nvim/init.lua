@@ -1,6 +1,13 @@
 --------------------------------------------------
 -- global variables
 --------------------------------------------------
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+keymap("", "<Space>", "<Nog>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.g.coc_disable_startup_warning = 1
 
 -- disable netrw
@@ -10,6 +17,7 @@ vim.g.loaded_netrwPlugin = 1
 --------------------------------------------------
 -- local variables
 --------------------------------------------------
+local api = vim.api
 local opt = vim.opt
 local Plug = vim.fn['plug#']
 
@@ -28,13 +36,13 @@ opt.tabstop = 4
 opt.splitbelow = true
 opt.splitright = true
 
-vim.opt.ignorecase = true
-vim.opt.mouse = "a"
-vim.opt.number = true
-vim.opt.smartcase = true
-vim.opt.ttyfast = true
-vim.opt.termguicolors = true
-vim.opt.wildmode = "longest,list"
+opt.ignorecase = true
+opt.mouse = "a"
+opt.number = true
+opt.smartcase = true
+opt.ttyfast = true
+opt.termguicolors = true
+opt.wildmode = "longest,list"
 vim.g.coc_disable_startup_warning = 1
 
 --------------------------------------------------
@@ -84,6 +92,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 -- syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+-- zen mode
+Plug 'Pocco81/true-zen.nvim'
+
 vim.call('plug#end')
 
 --------------------------------------------------
@@ -104,7 +115,7 @@ require('nvim-tree').setup()
 local function open_nvim_tree()
     require('nvim-tree.api').tree.open()
 end
-open_nvim_tree()
+-- open_nvim_tree()
 
 -- telescope
 local telescope = require("telescope.builtin")
@@ -123,13 +134,29 @@ require("toggleterm").setup()
 -- trouble
 require("trouble").setup()
 
+-- true zen
+require("true-zen").setup()
+
 --------------------------------------------------
--- configure keybindings
+-- key mappings
 --------------------------------------------------
-vim.cmd([[
-inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
-]])
+-- better window navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- true-zen
+keymap("n", "<leader>za", ":TZAtaraxis<CR>", opts)
+keymap("n", "<leader>zf", ":TZFocus<CR>", opts)
+keymap("n", "<leader>zm", ":TZMinimalist<CR>", opts)
+keymap("n", "<leader>zn", ":TZNarrow<CR>", opts)
+
+-- toggleterm
+api.nvim_set_keymap("n", "<leader>tt", ":ToggleTerm", opts)
+
+-- nvim-tree
+api.nvim_set_keymap("n", "<leader>tr", ":NvimTreeToggle", opts)
 
 --------------------------------------------------
 -- set theme
