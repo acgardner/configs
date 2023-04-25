@@ -95,11 +95,17 @@ Plug 'sheerun/vim-polyglot'
 -- zen mode
 Plug 'Pocco81/true-zen.nvim'
 
+-- tmux integration
+Plug 'aserowy/tmux.nvim'
+
 vim.call('plug#end')
 
 --------------------------------------------------
 -- set up packages
 --------------------------------------------------
+-- tmux integration
+require("tmux").setup()
+
 -- bufferline
 require("bufferline").setup({
     options = {
