@@ -8,24 +8,24 @@ echo "\n${BBLUE}     Welcome Anthony! What are we working on today?${RESET}\n"
 # ============================================================
 # ls
 # alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls --tree"
 
 # git
-alias gst='git status'
-alias gps='git push'
-alias gpl='git pull'
+alias gst="git status"
+alias gps="git push"
+alias gpl="git pull"
 
 # python
-alias p3='python3'
+alias p3="python3"
 
 # tmux
-alias t='tmux'
+alias t="tmux"
 
 # lazygit
-alias lg='lazygit'
+alias lg="lazygit"
 
 # ============================================================
 # configure paths          
