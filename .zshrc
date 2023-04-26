@@ -4,24 +4,31 @@ RC="\033[0m"
 echo "\n${COLOR}Welcome Anthony! What are we working on today?${RC}\n"
 
 #=============================================================
-# configure paths          
+# update environment variables      
 #=============================================================
-
-# export path to bin directories
+# export bin directories
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# add path to local bin directory
+# add local bin directory
 export PATH="$PATH:$HOME/.local/bin"
 
-# add path to vs code
+# add tmuxifier
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+# add vs code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# add path to oh-my-zsh installation
+# export oh-my-zsh directory
 export ZSH="$HOME/.oh-my-zsh"
+
+# update editor
+export EDITOR="/usr/local/bin/nvim"
 
 #=============================================================
 # initialize packages
 #=============================================================
+# tmuxifier
+eval "$(tmuxifier init -)"
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -29,7 +36,6 @@ eval "$(zoxide init zsh)"
 #=============================================================
 # configure zsh
 #=============================================================
-
 # define terminal theme
 ZSH_THEME="robbyrussell"
 
@@ -54,6 +60,15 @@ source $ZSH/oh-my-zsh.sh
 #=============================================================
 # configure aliases
 #=============================================================
+# git
+alias gst="git status"
+alias gps="git push"
+alias gpl="git pull"
+alias gcm="git cm"
+
+# lazygit
+alias lg="lazygit"
+
 # ls
 alias ls="colorls"
 alias l="colorls -l"
@@ -61,17 +76,13 @@ alias la="colorls -a"
 alias lla="colorls -la"
 alias lt="colorls --tree"
 
-# git
-alias gst="git status"
-alias gps="git push"
-alias gpl="git pull"
-alias gcm="git cm"
+# neovim
+alias nv="nvim"
 
 # python
 alias p3="python3"
 
 # tmux
-alias t="tmux"
-
-# lazygit
-alias lg="lazygit"
+alias te="tmuxifier edit-session"
+alias tl="tmuxifier load-session"
+alias tn="tmuxifier new-session"
