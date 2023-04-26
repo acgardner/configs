@@ -70,6 +70,9 @@ Plug('nvim-telescope/telescope.nvim', {branch='0.1.x'})
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 
+-- treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
+
 -- bufferline
 Plug('akinsho/bufferline.nvim', {tag='v3.*'})
 
@@ -79,8 +82,8 @@ Plug 'tpope/vim-fugitive'
 -- dashboard for neovim
 Plug('glepnir/dashboard-nvim', {event='VimEnter'})
 
--- theme
-Plug('folke/tokyonight.nvim', {branch='main'})
+-- aura theme
+Plug('baliestri/aura-theme', {rtp='packages/neovim'})
 
 -- toggle multiple terminals
 Plug('akinsho/toggleterm.nvim', {tag='v2.6.0'})
@@ -186,4 +189,4 @@ keymap("n", "<leader>pu", ":PlugUpdate<CR>", opts)
 --------------------------------------------------
 -- set theme
 --------------------------------------------------
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme aura-soft-dark]])
