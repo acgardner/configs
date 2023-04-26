@@ -1,35 +1,11 @@
-BBLUE="\e[1;34m"
-RESET="\033[0m"
+COLOR="\e[1;36m"
+RC="\033[0m"
 
-echo "\n${BBLUE}     Welcome Anthony! What are we working on today?${RESET}\n"
+echo "\n${COLOR}Welcome Anthony! What are we working on today?${RC}\n"
 
-# ============================================================
-# configure aliases
-# ============================================================
-# ls
-# alias ls='lsd'
-alias l="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lt="ls --tree"
-
-# git
-alias gst="git status"
-alias gps="git push"
-alias gpl="git pull"
-
-# python
-alias p3="python3"
-
-# tmux
-alias t="tmux"
-
-# lazygit
-alias lg="lazygit"
-
-# ============================================================
+#=============================================================
 # configure paths          
-# ============================================================
+#=============================================================
 
 # export path to bin directories
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -43,15 +19,16 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # add path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# ============================================================
-# configure zoxide
-# ============================================================
+#=============================================================
+# initialize packages
+#=============================================================
 
+# zoxide
 eval "$(zoxide init zsh)"
 
-# ============================================================
+#=============================================================
 # configure zsh
-# ============================================================
+#=============================================================
 
 # define terminal theme
 ZSH_THEME="robbyrussell"
@@ -73,3 +50,27 @@ source $HOME/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+#=============================================================
+# configure aliases
+#=============================================================
+# ls
+alias ls="colorls"
+alias l="colorls -l"
+alias la="colorls -a"
+alias lla="colorls -la"
+alias lt="colorls --tree"
+
+# git
+alias gst="git status"
+alias gps="git push"
+alias gpl="git pull"
+
+# python
+alias p3="python3"
+
+# tmux
+alias t="tmux"
+
+# lazygit
+alias lg="lazygit"
