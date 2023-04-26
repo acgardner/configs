@@ -13,6 +13,9 @@ sudo apt update && sudo apt upgrade -y
 # zsh
 sudo apt install zsh -y
 
+# tmuxifier
+git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+
 # zsh-autocomplete
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $HOME/.zsh-autocomplete
 

@@ -1,7 +1,7 @@
 COLOR="\e[1;36m"
 RC="\033[0m"
 
-echo "\n${COLOR}Welcome Anthony! What are we working on today?${RC}\n"
+echo "\n${COLOR}👋 Welcome Anthony!${RC}\n"
 
 #=============================================================
 # update environment variables      
