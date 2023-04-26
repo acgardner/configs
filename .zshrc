@@ -21,6 +21,12 @@ alias gpl='git pull'
 # python
 alias p3='python3'
 
+# tmux
+alias t='tmux'
+
+# lazygit
+alias lg='lazygit'
+
 # ============================================================
 # configure paths          
 # ============================================================

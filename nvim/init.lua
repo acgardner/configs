@@ -98,19 +98,25 @@ Plug 'Pocco81/true-zen.nvim'
 -- tmux integration
 Plug 'aserowy/tmux.nvim'
 
+-- twlight
+Plug 'folke/twilight.nvim'
+
 vim.call('plug#end')
 
 --------------------------------------------------
 -- set up packages
 --------------------------------------------------
+-- twilight
+require("twilight").setup()
+
 -- tmux integration
 require("tmux").setup()
 
 -- bufferline
 require("bufferline").setup({
-    options = {
-        close_icon = 'x',
-    }
+options = {
+close_icon = 'x',
+}
 })
 
 -- dashboard
@@ -119,7 +125,7 @@ require("dashboard").setup()
 -- directory tree
 require('nvim-tree').setup()
 local function open_nvim_tree()
-    require('nvim-tree.api').tree.open()
+require('nvim-tree.api').tree.open()
 end
 -- open_nvim_tree()
 
@@ -146,6 +152,9 @@ require("true-zen").setup()
 --------------------------------------------------
 -- key mappings
 --------------------------------------------------
+-- twilight
+api.nvim_set_keymap("n", "<leader>tw", ":Twilight<CR>", opts)
+
 -- better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>", opts)
