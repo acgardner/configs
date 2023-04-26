@@ -65,6 +65,7 @@ alias lt="colorls --tree"
 alias gst="git status"
 alias gps="git push"
 alias gpl="git pull"
+alias gcm="git cm"
 
 # python
 alias p3="python3"
