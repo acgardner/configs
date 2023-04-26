@@ -1,0 +1,14 @@
+[alias]
+	cm = commit -m
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = anthony gardner
+	email = acgardner95@gmail.com
+	name = Anthony
+[core]
+	editor = code --wait
