@@ -101,6 +101,9 @@ Plug 'aserowy/tmux.nvim'
 -- twlight
 Plug 'folke/twilight.nvim'
 
+-- tab control
+Plug 'romgrk/barbar.nvim'
+
 vim.call('plug#end')
 
 --------------------------------------------------
@@ -152,8 +155,12 @@ require("true-zen").setup()
 --------------------------------------------------
 -- key mappings
 --------------------------------------------------
+-- barbar
+keymap("n", "<leader>pt", ":BufferPrevious<CR>", opts)
+keymap("n", "<leader>nt", ":BufferNext<CR>", opts)
+
 -- twilight
-api.nvim_set_keymap("n", "<leader>tw", ":Twilight<CR>", opts)
+keymap("n", "<leader>tw", ":Twilight<CR>", opts)
 
 -- better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -168,10 +175,13 @@ keymap("n", "<leader>zm", ":TZMinimalist<CR>", opts)
 keymap("n", "<leader>zn", ":TZNarrow<CR>", opts)
 
 -- toggleterm
-api.nvim_set_keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
+keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 
 -- nvim-tree
-api.nvim_set_keymap("n", "<leader>tr", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>tr", ":NvimTreeToggle<CR>", opts)
+
+keymap("n", "<leader>pi", ":PlugInstall<CR>", opts)
+keymap("n", "<leader>pu", ":PlugUpdate<CR>", opts)
 
 --------------------------------------------------
 -- set theme
