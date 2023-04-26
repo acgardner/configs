@@ -50,6 +50,9 @@ vim.g.coc_disable_startup_warning = 1
 --------------------------------------------------
 vim.call('plug#begin')
 
+-- lualine
+Plug 'nvim-lualine/lualine.nvim'
+
 -- python autocompletion
 Plug 'davidhalter/jedi-vim'
 
@@ -112,6 +115,9 @@ vim.call('plug#end')
 --------------------------------------------------
 -- set up packages
 --------------------------------------------------
+-- lualine
+require("lualine").setup()
+
 -- twilight
 require("twilight").setup()
 
