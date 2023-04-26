@@ -159,10 +159,10 @@ keymap("n", "<leader>zm", ":TZMinimalist<CR>", opts)
 keymap("n", "<leader>zn", ":TZNarrow<CR>", opts)
 
 -- toggleterm
-api.nvim_set_keymap("n", "<leader>tt", ":ToggleTerm", opts)
+api.nvim_set_keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 
 -- nvim-tree
-api.nvim_set_keymap("n", "<leader>tr", ":NvimTreeToggle", opts)
+api.nvim_set_keymap("n", "<leader>tr", ":NvimTreeToggle<CR>", opts)
 
 --------------------------------------------------
 -- set theme
