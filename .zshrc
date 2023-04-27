@@ -71,7 +71,7 @@ alias lg="lazygit"
 
 # ls
 alias ls="colorls"
-alias l="colorls -l"
+alias ll="colorls -l"
 alias la="colorls -a"
 alias lla="colorls -la"
 alias lt="colorls --tree"
