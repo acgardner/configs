@@ -50,11 +50,20 @@ vim.g.coc_disable_startup_warning = 1
 --------------------------------------------------
 vim.call('plug#begin')
 
+-- lsp
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+
 -- lualine
 Plug 'nvim-lualine/lualine.nvim'
 
--- python autocompletion
-Plug 'davidhalter/jedi-vim'
+-- autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug('L3MON4D3/LuaSnip', {tag='v1.*'})
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
 
 -- diagnose errors
 Plug 'folke/trouble.nvim'
@@ -115,6 +124,48 @@ vim.call('plug#end')
 --------------------------------------------------
 -- set up packages
 --------------------------------------------------
+-- lsp
+require("mason").setup()
+
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls" }
+})
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local on_attach = nil
+
+require("lspconfig").lua_ls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+-- vs code-like snippets
+local cmp = require("cmp")
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-o>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
+    },
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+    }, {
+      { name = "buffer" },
+    }),
+})
+
+require("luasnip.loaders.from_vscode").load({
+  include = { "python" },
+})
+
 -- lualine
 require("lualine").setup()
 
@@ -137,9 +188,8 @@ require("dashboard").setup()
 -- directory tree
 require('nvim-tree').setup()
 local function open_nvim_tree()
-require('nvim-tree.api').tree.open()
+  require('nvim-tree.api').tree.open()
 end
--- open_nvim_tree()
 
 -- telescope
 local telescope = require("telescope.builtin")
