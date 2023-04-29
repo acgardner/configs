@@ -19,7 +19,7 @@ vim.g.loaded_netrwPlugin = 1
 --------------------------------------------------
 local api = vim.api
 local opt = vim.opt
-local Plug = vim.fn['plug#']
+local Plug = vim.fn["plug#"]
 
 --------------------------------------------------
 -- define editor settings
@@ -42,84 +42,85 @@ opt.number = true
 opt.smartcase = true
 opt.ttyfast = true
 opt.termguicolors = true
-opt.wildmode = "longest,list"
-vim.g.coc_disable_startup_warning = 1
+opt.wildchar = 0
+opt.wildmenu = true
+opt.wildmode = "longest:full,full"
 
 --------------------------------------------------
 -- import packages
 --------------------------------------------------
-vim.call('plug#begin')
+vim.call("plug#begin")
 
 -- lsp
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
+Plug "williamboman/mason.nvim"
+Plug "williamboman/mason-lspconfig.nvim"
+Plug "neovim/nvim-lspconfig"
 
 -- lualine
-Plug 'nvim-lualine/lualine.nvim'
+Plug "nvim-lualine/lualine.nvim"
 
 -- autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug('L3MON4D3/LuaSnip', {tag='v1.*'})
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
+Plug "hrsh7th/nvim-cmp"
+Plug "hrsh7th/cmp-nvim-lsp"
+Plug("L3MON4D3/LuaSnip", {tag="v1.*"})
+Plug "saadparwaiz1/cmp_luasnip"
+Plug "rafamadriz/friendly-snippets"
 
 -- diagnose errors
-Plug 'folke/trouble.nvim'
+Plug "folke/trouble.nvim"
 
 -- auto-close braces, scopes, etc: ( [ {
-Plug 'jiangmiao/auto-pairs'
+Plug "jiangmiao/auto-pairs"
 
 -- intellisense engine
-Plug('neoclide/coc.nvim', {branch='release'})
+Plug("neoclide/coc.nvim", {branch="release"})
 
 -- fuzzy finder for files, etc
-Plug 'nvim-lua/plenary.nvim'
-Plug('nvim-telescope/telescope.nvim', {branch='0.1.x'})
+Plug "nvim-lua/plenary.nvim"
+Plug("nvim-telescope/telescope.nvim", {branch="0.1.x"})
 
 -- tree-like side bar
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
+Plug "nvim-tree/nvim-web-devicons"
+Plug "nvim-tree/nvim-tree.lua"
 
 -- treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug "nvim-treesitter/nvim-treesitter"
 
 -- bufferline
-Plug('akinsho/bufferline.nvim', {tag='v3.*'})
+Plug("akinsho/bufferline.nvim", {tag="v3.*"})
 
 -- git integration
-Plug 'tpope/vim-fugitive'
+Plug "tpope/vim-fugitive"
 
 -- dashboard for neovim
-Plug('glepnir/dashboard-nvim', {event='VimEnter'})
+Plug("glepnir/dashboard-nvim", {event="VimEnter"})
 
 -- aura theme
-Plug('baliestri/aura-theme', {rtp='packages/neovim'})
+Plug("baliestri/aura-theme", {rtp="packages/neovim"})
 
 -- toggle multiple terminals
-Plug('akinsho/toggleterm.nvim', {tag='v2.6.0'})
+Plug("akinsho/toggleterm.nvim", {tag="v2.6.0"})
 
 -- js syntax highlighting
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug "yuezk/vim-js"
+Plug "maxmellon/vim-jsx-pretty"
 
 -- syntax highlighting
-Plug 'sheerun/vim-polyglot'
+Plug "sheerun/vim-polyglot"
 
 -- zen mode
-Plug 'Pocco81/true-zen.nvim'
+Plug "Pocco81/true-zen.nvim"
 
 -- tmux integration
-Plug 'aserowy/tmux.nvim'
+Plug "aserowy/tmux.nvim"
 
 -- twlight
-Plug 'folke/twilight.nvim'
+Plug "folke/twilight.nvim"
 
--- tab control
-Plug 'romgrk/barbar.nvim'
+-- tabline control
+Plug "romgrk/barbar.nvim"
 
-vim.call('plug#end')
+vim.call("plug#end")
 
 --------------------------------------------------
 -- set up packages
@@ -143,11 +144,11 @@ require("lspconfig").lua_ls.setup({
 local cmp = require("cmp")
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-o>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-o>"] = cmp.mapping.complete(),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
     }),
     snippet = {
       expand = function(args)
@@ -177,30 +178,30 @@ require("tmux").setup()
 
 -- bufferline
 require("bufferline").setup({
-options = {
-close_icon = 'x',
-}
+  options = {
+    close_icon = "x",
+  },
 })
 
 -- dashboard
 require("dashboard").setup()
 
 -- directory tree
-require('nvim-tree').setup()
+require("nvim-tree").setup()
 local function open_nvim_tree()
-  require('nvim-tree.api').tree.open()
+  require("nvim-tree.api").tree.open()
 end
 
 -- telescope
-local telescope = require("telescope.builtin")
-vim.keymap.set('n', '<leader><space>', telescope.buffers, {})
-vim.keymap.set('n', '<leader>?', telescope.oldfiles, {})
-vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
-vim.keymap.set('n', '<leader>fg', telescope.live_grep, {})
-vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
-vim.keymap.set('n', '<leader>fd', telescope.diagnostics, {})
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
-vim.keymap.set('n', '<leader>fs', telescope.current_buffer_fuzzy_find, {})
+-- local telescope = require("telescope.builtin")
+-- keymap("n", "<leader><space>", telescope.buffers, {})
+-- keymap("n", "<leader>?", telescope.oldfiles, {})
+-- keymap("n", "<leader>ff", telescope.find_files, {})
+-- keymap("n", "<leader>fg", telescope.live_grep, {})
+-- keymap("n", "<leader>fb", telescope.buffers, {})
+-- keymap("n", "<leader>fd", telescope.diagnostics, {})
+-- keymap("n", "<leader>fh", telescope.help_tags, {})
+-- keymap("n", "<leader>fs", telescope.current_buffer_fuzzy_find, {})
 
 -- toggleterm
 require("toggleterm").setup()
@@ -214,6 +215,20 @@ require("true-zen").setup()
 --------------------------------------------------
 -- key mappings
 --------------------------------------------------
+-- coc autocompletion
+vim.keymap.set(
+  "i",
+  "<Tab>",
+  function()
+    if vim.fn["coc#pum#visible"]() == 1 then
+      vim.fn["coc#pum#confirm"]()
+    else
+      return "<CR>"
+    end
+  end,
+  opts
+)
+
 -- barbar
 keymap("n", "<leader>pt", ":BufferPrevious<CR>", opts)
 keymap("n", "<leader>nt", ":BufferNext<CR>", opts)
