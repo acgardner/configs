@@ -22,6 +22,11 @@ local opt = vim.opt
 local Plug = vim.fn["plug#"]
 
 --------------------------------------------------
+-- plugins
+--------------------------------------------------
+require("core.plugins")
+
+--------------------------------------------------
 -- define editor settings
 --------------------------------------------------
 -- tabs & indentation
@@ -45,11 +50,6 @@ opt.termguicolors = true
 opt.wildchar = 0
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
-
---------------------------------------------------
--- import plugins
---------------------------------------------------
-require("core.plugins")
 
 --------------------------------------------------
 -- set up packages
@@ -113,9 +113,7 @@ require("bufferline").setup({
 })
 
 -- dashboard
-require("dashboard").setup({
-    theme = "hyper",
-  })
+require("dashboard").setup()
 
 -- directory tree
 require("nvim-tree").setup()
@@ -124,16 +122,16 @@ local function open_nvim_tree()
 end
 
 -- telescope
--- local telescope = require("telescope.builtin")
--- keymap("n", "<leader><space>", telescope.buffers, {})
--- keymap("n", "<leader>?", telescope.oldfiles, {})
--- keymap("n", "<leader>ff", telescope.find_files, {})
--- keymap("n", "<leader>fg", telescope.live_grep, {})
--- keymap("n", "<leader>fb", telescope.buffers, {})
--- keymap("n", "<leader>fd", telescope.diagnostics, {})
--- keymap("n", "<leader>fh", telescope.help_tags, {})
--- keymap("n", "<leader>fs", telescope.current_buffer_fuzzy_find, {})
-
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader><space>", telescope.buffers, opts)
+vim.keymap.set("n", "<leader>?", telescope.oldfiles, opts)
+vim.keymap.set("n", "<leader>ff", telescope.find_files, opts)
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, opts)
+vim.keymap.set("n", "<leader>fb", telescope.buffers, opts)
+vim.keymap.set("n", "<leader>fd", telescope.diagnostics, opts)
+vim.keymap.set("n", "<leader>fh", telescope.help_tags, opts)
+vim.keymap.set("n", "<leader>fs", telescope.current_buffer_fuzzy_find, opts)
+   
 -- toggleterm
 require("toggleterm").setup()
 
@@ -147,18 +145,18 @@ require("true-zen").setup()
 -- key mappings
 --------------------------------------------------
 -- coc autocompletion
--- vim.keymap.set(
---  "i",
---  "<Tab>",
---  function()
---    if vim.fn["coc#pum#visible"]() == 1 then
---      vim.fn["coc#pum#confirm"]()
---    else
---      return "<CR>"
---    end
---  end,
---  opts
---)
+vim.keymap.set(
+  "n",
+  "<Tab>",
+  function()
+    if vim.fn["coc#pum#visible"]() == 1 then
+      vim.fn["coc#pum#confirm"]()
+    else
+      return "<CR>"
+    end
+  end,
+  opts
+)
 
 -- barbar
 keymap("n", "<leader>pt", ":BufferPrevious<CR>", opts)
@@ -185,8 +183,16 @@ keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 -- nvim-tree
 keymap("n", "<leader>tr", ":NvimTreeToggle<CR>", opts)
 
+-- plug
 keymap("n", "<leader>pi", ":PlugInstall<CR>", opts)
 keymap("n", "<leader>pu", ":PlugUpdate<CR>", opts)
+
+-- movement
+keymap("n", "$", "$l", opts)
+
+-- markdown preview
+keymap("n", "<leader>mdp", ":MarkdownPreview<CR>", opts)
+keymap("n", "<leader>mds", ":MarkdownPreviewStop<CR>", opts)
 
 --------------------------------------------------
 -- set theme
