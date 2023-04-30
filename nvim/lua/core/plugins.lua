@@ -2,6 +2,9 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
+-- markdown preview
+Plug "iamcco/markdown-preview.nvim"
+
 -- lsp
 Plug "williamboman/mason.nvim"
 Plug "williamboman/mason-lspconfig.nvim"

@@ -46,6 +46,9 @@ opt.wildchar = 0
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 
+--------------------------------------------------
+-- import plugins
+--------------------------------------------------
 require("core.plugins")
 
 --------------------------------------------------
@@ -110,7 +113,9 @@ require("bufferline").setup({
 })
 
 -- dashboard
-require("dashboard").setup()
+require("dashboard").setup({
+    theme = "hyper",
+  })
 
 -- directory tree
 require("nvim-tree").setup()
@@ -142,18 +147,18 @@ require("true-zen").setup()
 -- key mappings
 --------------------------------------------------
 -- coc autocompletion
-vim.keymap.set(
-  "i",
-  "<Tab>",
-  function()
-    if vim.fn["coc#pum#visible"]() == 1 then
-      vim.fn["coc#pum#confirm"]()
-    else
-      return "<CR>"
-    end
-  end,
-  opts
-)
+-- vim.keymap.set(
+--  "i",
+--  "<Tab>",
+--  function()
+--    if vim.fn["coc#pum#visible"]() == 1 then
+--      vim.fn["coc#pum#confirm"]()
+--    else
+--      return "<CR>"
+--    end
+--  end,
+--  opts
+--)
 
 -- barbar
 keymap("n", "<leader>pt", ":BufferPrevious<CR>", opts)
